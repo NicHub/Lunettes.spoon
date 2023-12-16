@@ -1,8 +1,8 @@
 # LUNETTES
 
-Lunettes is a fork of [Lunettes].
+Lunettes is a fork of [Lunette].
 
-[Lunettes]: https://github.com/scottwhudson/Lunettes
+[Lunette]: https://github.com/scottwhudson/Lunette
 
 It is a window manager based on [Hammerspoon].
 
