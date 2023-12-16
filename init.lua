@@ -1,16 +1,13 @@
---- === Lunette ===
----
---- Zero-config Spectacle Keybindings for Hammerspoon
---- Download: [https://github.com/scottwhudson/Lunette/blob/master/Spoons/Lunette.spoon.zip](https://github.com/scottwhudson/Lunette/blob/master/Spoons/Lunette.spoon.zip)
+--- === Lunettes ===
 local obj = {}
 obj.__index = obj
 
 --- Metadata
-obj.name = "Lunette"
+obj.name = "Lunettes"
 obj.version = "0.3.1"
 obj.author = "Scott Hudson <scott.w.hudson@gmail.com>"
 obj.license = "MIT"
-obj.homepage = "https://github.com/scottwhudson/Lunette"
+obj.homepage = "https://github.com/NicHub/Lunettes.spoon.git"
 
 --- disable animation
 hs.window.animationDuration = 0
@@ -22,68 +19,68 @@ local function script_path()
 end
 obj.spoonPath = script_path()
 
-obj.Command = dofile(obj.spoonPath.."/command.lua")
-obj.history = dofile(obj.spoonPath.."/history.lua"):init()
+obj.Command = dofile(obj.spoonPath .. "src/command.lua")
+obj.history = dofile(obj.spoonPath .. "src/history.lua"):init()
 
 obj.defaultHotkeys = {
   leftHalf = {
-    {{"cmd", "alt"}, "left"},
+    { { "ctrl", "alt" }, "left" },
   },
   rightHalf = {
-    {{"cmd", "alt"}, "right"},
+    { { "ctrl", "alt" }, "right" },
   },
   topHalf = {
-    {{"cmd", "alt"}, "up"},
+    { { "ctrl", "alt" }, "up" },
   },
   bottomHalf = {
-    {{"cmd", "alt"}, "down"},
+    { { "ctrl", "alt" }, "down" },
   },
   topLeft = {
-    {{"ctrl", "cmd"}, "Left"},
+    { { "ctrl", "alt" }, "U" },
   },
   topRight = {
-    {{"ctrl", "cmd"}, "Right"},
+    { { "ctrl", "alt" }, "I" },
   },
   bottomLeft = {
-    {{"ctrl", "cmd", "shift"}, "Left"},
+    { { "ctrl", "alt" }, "J" },
   },
   bottomRight = {
-    {{"ctrl", "cmd", "shift"}, "Right"},
+    { { "ctrl", "alt" }, "K" },
   },
   fullScreen = {
-    {{"cmd", "alt"}, "F"},
+    { { "ctrl", "alt" }, "Return" },
   },
   center = {
-    {{"cmd", "alt"}, "C"},
+    { { "ctrl", "alt" }, "C" },
   },
   nextThird = {
-    {{"ctrl", "alt"}, "Right"},
+    { { "ctrl", "alt" }, "Right" },
   },
   prevThird = {
-    {{"ctrl", "alt"}, "Left"},
+    { { "ctrl", "alt" }, "Left" },
   },
   enlarge = {
-    {{"ctrl", "alt", "shift"}, "Right"},
+    { { "ctrl", "alt", "shift" }, "Right" },
   },
   shrink = {
-    {{"ctrl", "alt", "shift"}, "Left"},
+    { { "ctrl", "alt", "shift" }, "Left" },
   },
   undo = {
-    {{"alt", "cmd"}, "Z"},
+    { { "alt", "cmd" }, "Z" },
   },
   redo = {
-    {{"alt", "cmd", "shift"}, "Z"},
+    { { "alt", "cmd", "shift" }, "Z" },
   },
   nextDisplay = {
-    {{"ctrl", "alt", "cmd"}, "Right"},
+    { { "ctrl", "alt", "cmd" }, "Right" },
   },
   prevDisplay = {
-    {{"ctrl", "alt", "cmd"}, "Left"},
+    { { "ctrl", "alt", "cmd" }, "Left" },
   }
 }
 
 function obj:bindHotkeys(userBindings)
-  print("Lunette: Binding Hotkeys")
+  print("Lunettes: Binding Hotkeys")
 
   local userBindings = userBindings or {}
   local bindings = self.defaultHotkeys
@@ -116,7 +113,7 @@ function obj:exec(commandName)
   elseif commandName == "redo" then
     newFrame = self.history:retrieveNextState()
   else
-    print("Lunette: " .. commandName)
+    print("Lunettes: " .. commandName)
     print(self.Command[commandName])
     newFrame = self.Command[commandName](windowFrame, screenFrame)
     self.history:push(currentFrame, newFrame)

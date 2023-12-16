@@ -9,8 +9,8 @@ local function script_path()
 end
 obj.spoonPath = script_path()
 
-Validate = dofile(obj.spoonPath.."/validator.lua")
-Resize = dofile(obj.spoonPath.."/resize.lua")
+Validate = dofile(obj.spoonPath.."validator.lua")
+Resize = dofile(obj.spoonPath.."resize.lua")
 
 --- Command:leftHalf(windowFrame, screenFrame)
 --- Method
